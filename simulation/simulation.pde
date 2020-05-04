@@ -35,6 +35,10 @@ void draw() {
   if (switch2 == true) {
     police1();
   }
+  
+  if (switch3 == true) {
+    knightRider();
+  }
     
   if (leftBlink == true) {
     leftBlinkerV1();
@@ -191,6 +195,14 @@ void keyPressed() {
       switch2 = true;
     } else if (switch2 == true) {
       switch2 = false;
+    }
+  }
+  
+  if (key == 'y' ) {
+    if (switch3 == false) {
+      switch3 = true;
+    } else if (switch3 == true) {
+      switch3 = false;
     }
   }  
 }
