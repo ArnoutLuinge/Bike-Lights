@@ -20,7 +20,7 @@ boolean lights, brake, leftBlink, rightBlink, reverse, switch1, switch2, switch3
 int leftBlueColor, rightBlueColor, leftBlinkColor, rightBlinkColor, lightsColor, lightsColor2, brakeColor;
 int leds = 40;
 int[] colorsArray = new int[leds];
-int blinkCounter;
+int blinkCounter, policeCounter;
 
 
 int blinkColor, blinkOffColor, blueColor, blueOffColor;
@@ -79,7 +79,7 @@ void draw() {
   }
 
   //draw rear leds
-  for (int i = 0; i < leds; i++) {
+  for (int i = 0; i < leds; i++) { //<>//
     fill(colorsArray[i]);
     circle(100+40*i, 400, 20);
   }
@@ -279,7 +279,7 @@ void leftBlinkerV4() {
   if (blinkCounter >=20 && blinkCounter < 35) {
     leftBlinkColor = blinkColor;      
     for (int i = 0; i < 35-blinkCounter; i++) {
-      colorsArray[i] = blinkColor; //<>// //<>//
+      colorsArray[i] = blinkColor; //<>//
     }
   }
 
@@ -333,7 +333,7 @@ void rightBlinkerV4() {
   if (blinkCounter >=20 && blinkCounter < 35) {
     rightBlinkColor = blinkColor;      
     for (int i = 5+blinkCounter; i < 40; i++) {
-      colorsArray[i] = blinkColor; //<>//
+      colorsArray[i] = blinkColor;
     }
   }
 
@@ -359,9 +359,33 @@ void rightBlinkerV4() {
   // }
 }
 
-void police1() {
-  leftBlueColor = blueColor;
-  rightBlueColor = blueColor;
+void police1() { //<>//
+  leftUsed = true;
+  rightUsed = true;
+  
+  switch (policeCounter) {
+    
+    case (0) :
+      leftBlueColor = blueColor;
+      for (int i = 0; i < 15; i++) {
+        colorsArray[i] = blueColor;
+      }
+      break;
+      
+    case (3) :  
+      rightBlueColor = blueColor;
+      for (int i = 25; i < 40; i++) {
+        colorsArray[i] = color(0, 0, 255);
+      }
+      break;
+  }
+  
+  policeCounter++;
+
+  if (policeCounter == 4) {
+    policeCounter = 0;
+  } //<>//
+  
 }
 
 void hazards() {
